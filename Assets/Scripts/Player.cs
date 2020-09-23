@@ -8,9 +8,14 @@ public class Player : MonoBehaviour
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
 
-    void Start()
+
+    private void Awake()
     {
         Stat = new CharacterStat(1, 0, 3, 1, 10);
+    }
+    void Start()
+    {
+        
     }
 
     public void PerformAttack()

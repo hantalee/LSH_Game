@@ -11,6 +11,8 @@ public class Slime : MonoBehaviour, IMonster
     public int MaxHealth { get; set; }
     public int CurrentHealth { get; set; }
 
+    public GameObject damageText;
+
     void Start()
     {
         monster = DataManager.Instance.GetMonsterByName("Slime");
@@ -28,7 +30,9 @@ public class Slime : MonoBehaviour, IMonster
     }
     public void TakeDamage(int amount)
     {
-        Debug.Log(gameObject.name + "is TakeDamage " + amount);
+        GameObject tempText = Instantiate(damageText);
+        tempText.transform.position = gameObject.transform.position;
+        tempText.GetComponent<DamageText>().damage = amount;
         CurrentHealth -= amount;
         Debug.Log("CurrentHealth : " + CurrentHealth);
         if (CurrentHealth <= 0)

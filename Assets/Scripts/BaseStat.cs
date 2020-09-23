@@ -36,11 +36,13 @@ public class BaseStat
     public void AddBonusStat(BonusStat bonusStat)
     {
         this.BonusStat.Add(bonusStat);
+        UIEventHandler.StatsChanged();
     }
 
     public void RemoveBonusStat(BonusStat bonusStat)
     {
         this.BonusStat.Remove(BonusStat.Find(x =>(x.BonusValue == bonusStat.BonusValue)));
+        UIEventHandler.StatsChanged();
     }
 
     public int GetFinalValue()
