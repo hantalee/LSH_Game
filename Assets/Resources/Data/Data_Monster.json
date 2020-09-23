@@ -1,0 +1,68 @@
+[
+  {
+    "Id": "MONSTER-001",
+    "Name": "Slime",
+    "Stat": {
+      "stats": [
+        {
+          "StatType": "AttackPower",
+          "BaseValue": 5,
+          "StatName": "AttackPower"
+        },
+        {
+          "StatType": "DefensePower",
+          "BaseValue": 5,
+          "StatName": "DefensePower"
+        },
+        {
+          "StatType": "MoveSpeed",
+          "BaseValue": 3,
+          "StatName": "MoveSpeed"
+        },
+        {
+          "StatType": "AttackSpeed",
+          "BaseValue": 1,
+          "StatName": "AttackSpeed"
+        },
+        {
+          "StatType": "Hp",
+          "BaseValue": 3,
+          "StatName": "Hp"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "MONSTER-002",
+    "Name": "Orc",
+    "Stat": {
+      "stats": [
+        {
+          "StatType": "AttackPower",
+          "BaseValue": 10,
+          "StatName": "AttackPower"
+        },
+        {
+          "StatType": "DefensePower",
+          "BaseValue": 5,
+          "StatName": "DefensePower"
+        },
+        {
+          "StatType": "MoveSpeed",
+          "BaseValue": 3,
+          "StatName": "MoveSpeed"
+        },
+        {
+          "StatType": "AttackSpeed",
+          "BaseValue": 1,
+          "StatName": "AttackSpeed"
+        },
+        {
+          "StatType": "Hp",
+          "BaseValue": 50,
+          "StatName": "Hp"
+        }
+      ]
+    }
+  }
+]

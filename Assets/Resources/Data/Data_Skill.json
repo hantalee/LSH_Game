@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "Skill-001",
+    "Name": "Power Up",
+    "Type": "Passive",
+    "CollDown": 0,
+    "Description": "Increase your AttackPower",
+    "IconName": "Icon_Skill_001"
+  },
+  {
+    "Id": "Skill-002",
+    "Name": "Health Up",
+    "Type": "Passive",
+    "CollDown": 0,
+    "Description": "Increase your MaxHealth",
+    "IconName": "Icon_Skill_002"
+  },
+  {
+    "Id": "Skill-003",
+    "Name": "MoveSpee Up",
+    "Type": "Passive",
+    "CollDown": 0,
+    "Description": "Increase your MoveSpeed",
+    "IconName": "Icon_Skill_003"
+  }
+]

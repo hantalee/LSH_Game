@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "ITEM-001",
+    "Class": "Sword",
+    "Name": "IronSword",
+    "Type": "Weapon",
+    "ActionName": "Equip",
+    "Price": 100,
+    "Description": "~",
+    "Stats": [
+      {
+        "StatType": "AttackPower",
+        "BaseValue": 10,
+        "StatName": "Damage"
+      },
+      {
+        "StatType": "AttackSpeed",
+        "BaseValue": 1,
+        "StatName": "AttackSpeed"
+      }
+    ]
+  },
+  {
+    "Id": "ITEM-002",
+    "Class": "Potion",
+    "Name": "HealthPotion",
+    "Type": "Consumable",
+    "ActionName": "Drink",
+    "Price": 10,
+    "Description": "It restores stamina"
+  }
+]
