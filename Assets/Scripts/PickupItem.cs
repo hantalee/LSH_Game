@@ -10,9 +10,13 @@ public class PickupItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //인벤토리에 아이템 추가
-            Debug.Log("Get " + ItemData.Name);
-            Destroy(gameObject);
+            if (ItemData != null)
+            {
+                InventoryController.Instance.AddItemToInventory(ItemData);
+                Destroy(gameObject);
+            }
+            else
+                Debug.LogWarning("PickupItem::ItemData is null");
         }
     }
 }
