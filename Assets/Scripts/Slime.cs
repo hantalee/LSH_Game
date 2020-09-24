@@ -12,6 +12,8 @@ public class Slime : MonoBehaviour, IMonster
     public int CurrentHealth { get; set; }
 
     public GameObject damageText;
+    public PickupItem prefPickupItem;
+    public DropTable DropTable { get; set; }
 
     void Start()
     {
@@ -21,11 +23,18 @@ public class Slime : MonoBehaviour, IMonster
         Stat = monster.Stat;
         MaxHealth = monster.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
+
+        DropTable = new DropTable();
+        DropTable.loots = new List<Loot>()
+        {
+            new Loot("IronSword", 50),
+            new Loot("HealthPotion", 50)
+        };
     }
 
     public void Die()
     {
-        Debug.Log(gameObject.name + "is Die!");
+        DropLoot();
         Destroy(gameObject);
     }
     public void TakeDamage(int amount)
@@ -34,7 +43,6 @@ public class Slime : MonoBehaviour, IMonster
         tempText.transform.position = gameObject.transform.position;
         tempText.GetComponent<DamageText>().damage = amount;
         CurrentHealth -= amount;
-        Debug.Log("CurrentHealth : " + CurrentHealth);
         if (CurrentHealth <= 0)
         {
             Die();
@@ -43,5 +51,15 @@ public class Slime : MonoBehaviour, IMonster
     public void PerformAttack()
     {
 
+    }
+
+    void DropLoot()
+    {
+        ItemData itemData = DropTable.GetDrop();
+        if(itemData != null)
+        {
+            PickupItem item = Instantiate(prefPickupItem, transform.position, Quaternion.identity);
+            item.ItemData = itemData;
+        }
     }
 }
