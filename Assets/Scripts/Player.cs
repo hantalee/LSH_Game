@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Monster")
         {
             int CurrentDamage = Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
-            collision.gameObject.GetComponent<IMonster>().TakeDamage(CurrentDamage);
+            collision.gameObject.GetComponent<BaseMonster>().TakeDamage(CurrentDamage);
         }
     }
 }

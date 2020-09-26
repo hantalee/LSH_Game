@@ -2,28 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour, IMonster
+public class Slime : BaseMonster
 {
-    private MonsterData monster;
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public CharacterStat Stat { get; set; }
-    public int MaxHealth { get; set; }
-    public int CurrentHealth { get; set; }
-
-    public GameObject damageText;
-    public PickupItem prefPickupItem;
-    public DropTable DropTable { get; set; }
-
-    void Start()
+    public override void Init()
     {
-        monster = DataManager.Instance.GetMonsterByName("Slime");
-        Id = monster.Id;
-        Name = monster.Name;
-        Stat = monster.Stat;
-        MaxHealth = monster.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
+        data = DataManager.Instance.GetMonsterByName("Slime");
+        Id = data.Id;
+        Name = data.Name;
+        Stat = data.Stat;
+        MaxHealth = data.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
 
+        SetDropTable();
+    }
+
+    public override void SetDropTable()
+    {
         DropTable = new DropTable();
         DropTable.loots = new List<Loot>()
         {
@@ -32,34 +26,16 @@ public class Slime : MonoBehaviour, IMonster
         };
     }
 
-    public void Die()
+    public override void Die()
     {
-        DropLoot();
-        Destroy(gameObject);
+        base.Die();
     }
-    public void TakeDamage(int amount)
+    public override void TakeDamage(int amount)
     {
-        GameObject tempText = Instantiate(damageText);
-        tempText.transform.position = gameObject.transform.position;
-        tempText.GetComponent<DamageText>().damage = amount;
-        CurrentHealth -= amount;
-        if (CurrentHealth <= 0)
-        {
-            Die();
-        }
+        base.TakeDamage(amount);
     }
-    public void PerformAttack()
+    public override void PerformAttack()
     {
-
-    }
-
-    void DropLoot()
-    {
-        ItemData itemData = DropTable.GetDrop();
-        if(itemData != null)
-        {
-            PickupItem item = Instantiate(prefPickupItem, transform.position, Quaternion.identity);
-            item.ItemData = itemData;
-        }
+        base.PerformAttack();
     }
 }

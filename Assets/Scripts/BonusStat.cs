@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class BonusStat
 {
     public int BonusValue { get; set; }

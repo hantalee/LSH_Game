@@ -6,18 +6,20 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public ItemData itemData;
-    public Text itemText;
-    public Image itemIcon;
+    public Text txt_ItemCount;
+    public Image img_ItemIcon;
 
     public void SetItem(ItemData itemData)
     {
+        Debug.Log("SetItem");
         this.itemData = itemData;
         InitItemValues();
     }
 
     void InitItemValues()
     {
-        itemText.text = itemData.Name;
-        itemIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + itemData.Class);
+        Debug.Log("InitItemValues");
+        txt_ItemCount.text = itemData.Name;
+        img_ItemIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + itemData.Class);
     }
 }

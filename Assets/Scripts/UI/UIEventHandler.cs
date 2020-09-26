@@ -14,7 +14,7 @@ public class UIEventHandler : MonoBehaviour
     public delegate void StatsEventHandler();
     public static event StatsEventHandler OnStatsChanged;
 
-    public static void ItemAddedToEnventory(ItemData item)
+    public static void ItemAddedToInventory(ItemData item)
     {
         OnItemAddedToInventory(item);
     }

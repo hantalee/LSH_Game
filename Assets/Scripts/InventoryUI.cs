@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    ItemSlot ItemSlot { get; set; }
+    private ItemSlot[] slots;
+    public Transform slotHolder;
+    public int slotNum;
+    public int ItemCount { get; set; }
+
     void Start()
     {
-        ItemSlot = Resources.Load<ItemSlot>("UI/Prefabs/ItemSlot");
+        slots = slotHolder.GetComponentsInChildren<ItemSlot>();
+        for (int i = 0; i < slots.Length; ++i)
+        {
+            slots[i].itemData = null;
+        }
         UIEventHandler.OnItemAddedToInventory += ItemAdded;
     }
 
     public void ItemAdded(ItemData itemData)
     {
-        ItemSlot emptySlot = Instantiate(ItemSlot);
-        emptySlot.SetItem(itemData);
-        emptySlot.transform.SetParent(gameObject.transform);
+        for(int i = 0; i < slots.Length; ++i)
+        {
+            if(slots[i].itemData == null)
+            {
+                Debug.Log("ItemAdded");
+                slots[i].SetItem(itemData);
+                break;
+            }
+        }
     }
 }
