@@ -9,17 +9,25 @@ public class ItemSlot : MonoBehaviour
     public Text txt_ItemCount;
     public Image img_ItemIcon;
 
+    private void Start()
+    {
+        img_ItemIcon.gameObject.SetActive(false);
+        txt_ItemCount.text = 0.ToString();
+        txt_ItemCount.gameObject.SetActive(false);
+    }
+
     public void SetItem(ItemData itemData)
     {
-        Debug.Log("SetItem");
         this.itemData = itemData;
         InitItemValues();
+
+        img_ItemIcon.gameObject.SetActive(true);
+        if(int.Parse(txt_ItemCount.text) > 1)
+            txt_ItemCount.gameObject.SetActive(true);
     }
 
     void InitItemValues()
     {
-        Debug.Log("InitItemValues");
-        txt_ItemCount.text = itemData.Name;
         img_ItemIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + itemData.Class);
     }
 }

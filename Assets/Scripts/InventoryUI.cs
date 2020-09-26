@@ -6,7 +6,6 @@ public class InventoryUI : MonoBehaviour
 {
     private ItemSlot[] slots;
     public Transform slotHolder;
-    public int slotNum;
     public int ItemCount { get; set; }
 
     void Start()
@@ -25,7 +24,6 @@ public class InventoryUI : MonoBehaviour
         {
             if(slots[i].itemData == null)
             {
-                Debug.Log("ItemAdded");
                 slots[i].SetItem(itemData);
                 break;
             }
