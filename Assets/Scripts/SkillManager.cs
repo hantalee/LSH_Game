@@ -54,7 +54,10 @@ public class SkillManager : MonoBehaviour
     {
         BaseSkill skill = usedSkills.Find(x => (x.Data.Name == skillName));
         if (skill != null)
+        {
             skill.Use();
+            UIEventHandler.UseSkill(skill.Data.Name);
+        }
     }
 
     public void DeleteSkillByName(string skillName)

@@ -241,10 +241,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224092968}
-  - component: {fileID: 224092967}
   - component: {fileID: 224092966}
   - component: {fileID: 224092965}
   - component: {fileID: 224092970}
+  - component: {fileID: 224092967}
   - component: {fileID: 224092969}
   m_Layer: 9
   m_Name: Npc
@@ -345,6 +345,8 @@ MonoBehaviour:
   - "\uC2A4\uD0AC \uBC30\uC6B0\uACE0 \uAC08\uB798?"
   - "\uB69C\uBE44\uB69C\uBC25\uB69C\uBE44\uB69C\uBC25\uBC14"
   name: "\uACFC\uC678\uC120\uC0DD"
+  skillsName: []
+  skillCount: 1
 --- !u!4 &224092968
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +984,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2252197fc89f245acba9fa92765898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1324148294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324148295}
+  - component: {fileID: 1324148296}
+  - component: {fileID: 1324148297}
+  m_Layer: 5
+  m_Name: SkillIcons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1324148295
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324148294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1886783224}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -5.49, y: -113}
+  m_SizeDelta: {x: 289.0279, y: 226.00775}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1324148296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324148294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 1
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 32, y: 32}
+  m_Spacing: {x: 2, y: 2}
+  m_Constraint: 1
+  m_ConstraintCount: 9
+--- !u!114 &1324148297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324148294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f92924d34b90494c9daa033de2effbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usedSkillIcon: {fileID: 4297051496649005273, guid: 5b3ce2094e743304f86d3ee99eb9fb13, type: 3}
 --- !u!1 &1496973562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1245,7 @@ RectTransform:
   m_Children:
   - {fileID: 1546619165}
   - {fileID: 1023413449}
+  - {fileID: 1324148295}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

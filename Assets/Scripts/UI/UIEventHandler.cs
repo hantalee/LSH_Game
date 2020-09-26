@@ -14,6 +14,9 @@ public class UIEventHandler : MonoBehaviour
     public delegate void StatsEventHandler();
     public static event StatsEventHandler OnStatsChanged;
 
+    public delegate void UseSkillEventHandler(string skillName);
+    public static event UseSkillEventHandler OnUseSkill;
+
     public static void ItemAddedToInventory(ItemData item)
     {
         OnItemAddedToInventory(item);
@@ -32,5 +35,10 @@ public class UIEventHandler : MonoBehaviour
     public static void StatsChanged()
     {
         OnStatsChanged();
+    }
+
+    public static void UseSkill(string skillName)
+    {
+        OnUseSkill(skillName);
     }
 }
