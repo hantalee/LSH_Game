@@ -11,14 +11,15 @@ public class DataManager : MonoBehaviour
     private List<CharacterData> characterDatas;
     private List<MonsterData> monsterDatas;
     private List<ItemData> itemDatas;
-    private List<BuffData> buffDatas;
     private List<SkillData> skillDatas;
+    private List<StageData> stageDatas;
 
     public List<CharacterData> CharacterDatas { get => characterDatas; }
     public List<MonsterData> MonsterDatas { get => monsterDatas; }
     public List<ItemData> ItemDatas { get => itemDatas; }
-    public List<BuffData> BuffData { get => buffDatas; }
     public List<SkillData> SkillDatas { get => skillDatas; }
+    public List<StageData> StageDatas { get => stageDatas; }
+
     /// </데이터 리스트>
 
     private static DataManager instance;
@@ -31,6 +32,7 @@ public class DataManager : MonoBehaviour
             return null;
         }
     }
+
 
     private void Awake()
     {
@@ -47,8 +49,8 @@ public class DataManager : MonoBehaviour
         characterDatas = LoadJsonFile<CharacterData>("Data_Character");
         monsterDatas = LoadJsonFile<MonsterData>("Data_Monster");
         itemDatas = LoadJsonFile<ItemData>("Data_Item");
-        //buffDatas = LoadJsonFile<BuffData>("Data_Buff");
         skillDatas = LoadJsonFile<SkillData>("Data_Skill");
+        stageDatas = LoadJsonFile<StageData>("Data_Stage");
     }
 
     public CharacterData GetCharacterByName(string name)
@@ -60,7 +62,7 @@ public class DataManager : MonoBehaviour
                 return character;
             }
         }
-        Debug.LogWarning("Couldn't find item : " + name);
+        Debug.LogWarning("Couldn't find character : " + name);
         return null;
     }
 
@@ -73,7 +75,7 @@ public class DataManager : MonoBehaviour
                 return monster;
             }
         }
-        Debug.LogWarning("Couldn't find item : " + name);
+        Debug.LogWarning("Couldn't find monster : " + name);
         return null;
     }
 
@@ -90,19 +92,6 @@ public class DataManager : MonoBehaviour
         return null;
     }
 
-    public BuffData GetBuffDataByName(string name)
-    {
-        foreach (BuffData buff in buffDatas)
-        {
-            if (buff.Name == name)
-            {
-                return buff;
-            }
-        }
-        Debug.LogWarning("Couldn't find item : " + name);
-        return null;
-    }
-
     public SkillData GetSkillDataByName(string name)
     {
         foreach (SkillData skill in skillDatas)
@@ -112,7 +101,20 @@ public class DataManager : MonoBehaviour
                 return skill;
             }
         }
-        Debug.LogWarning("Couldn't find item : " + name);
+        Debug.LogWarning("Couldn't find skill : " + name);
+        return null;
+    }
+
+    public StageData GetStageData(int round)
+    {
+        foreach (StageData stage in stageDatas)
+        {
+            if (stage.Round == round)
+            {
+                return stage;
+            }
+        }
+        Debug.LogWarning("Couldn't find stage : " + round);
         return null;
     }
 

@@ -15,8 +15,6 @@ public class Chicken : BaseCharacter
         DropChance = data.DropChance;
         MaxHealth = data.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
-
-        print("name : " + Name);
     }
 
     public override void Die()

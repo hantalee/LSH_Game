@@ -1,0 +1,92 @@
+[
+  {
+    "Round": 1,
+    "Type": "Nomal",
+    "SpawnData": [
+      {
+        "monsterName": "Slime",
+        "monsterNum": 1
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 2
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 3
+      }
+    ]
+  },
+  {
+    "Round": 2,
+    "Type": "Nomal",
+    "SpawnData": [
+      {
+        "monsterName": "Slime",
+        "monsterNum": 1
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 2
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 3
+      }
+    ]
+  },
+  {
+    "Round": 3,
+    "Type": "Nomal",
+    "SpawnData": [
+      {
+        "monsterName": "Slime",
+        "monsterNum": 1
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 2
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 3
+      }
+    ]
+  },
+  {
+    "Round": 4,
+    "Type": "Nomal",
+    "SpawnData": [
+      {
+        "monsterName": "Slime",
+        "monsterNum": 1
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 2
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 3
+      }
+    ]
+  },
+  {
+    "Round": 5,
+    "Type": "Store",
+    "SpawnData": [
+      {
+        "monsterName": "Slime",
+        "monsterNum": 1
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 2
+      },
+      {
+        "monsterName": "Slime",
+        "monsterNum": 3
+      }
+    ]
+  }
+]
