@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
+[System.Serializable]
 public class SkillData
 {
     public enum SkillType

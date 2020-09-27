@@ -6,7 +6,6 @@ public class InventoryUI : MonoBehaviour
 {
     private ItemSlot[] slots;
     public Transform slotHolder;
-    public int ItemCount { get; set; }
 
     void Start()
     {

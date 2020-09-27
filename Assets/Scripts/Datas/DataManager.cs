@@ -13,10 +13,10 @@ public class DataManager : MonoBehaviour
     private List<BuffData> buffDatas;
     private List<SkillData> skillDatas;
 
-    public List<MonsterData> MonsterDatas { get; }
-    public List<ItemData> ItemDatas { get; }
-    public List<BuffData> BuffData { get; }
-    public List<SkillData> SkillDatas { get; }
+    public List<MonsterData> MonsterDatas { get => monsterDatas; }
+    public List<ItemData> ItemDatas { get => itemDatas; }
+    public List<BuffData> BuffData { get => buffDatas; }
+    public List<SkillData> SkillDatas { get => skillDatas; }
     /// </데이터 리스트>
 
     private static DataManager instance;
