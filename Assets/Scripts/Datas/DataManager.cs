@@ -8,11 +8,13 @@ using System.Text;
 public class DataManager : MonoBehaviour
 {
     /// <데이터 리스트>
+    private List<CharacterData> characterDatas;
     private List<MonsterData> monsterDatas;
     private List<ItemData> itemDatas;
     private List<BuffData> buffDatas;
     private List<SkillData> skillDatas;
 
+    public List<CharacterData> CharacterDatas { get => characterDatas; }
     public List<MonsterData> MonsterDatas { get => monsterDatas; }
     public List<ItemData> ItemDatas { get => itemDatas; }
     public List<BuffData> BuffData { get => buffDatas; }
@@ -42,10 +44,24 @@ public class DataManager : MonoBehaviour
 
     void BuildDataBase()
     {
+        characterDatas = LoadJsonFile<CharacterData>("Data_Character");
         monsterDatas = LoadJsonFile<MonsterData>("Data_Monster");
         itemDatas = LoadJsonFile<ItemData>("Data_Item");
         //buffDatas = LoadJsonFile<BuffData>("Data_Buff");
         skillDatas = LoadJsonFile<SkillData>("Data_Skill");
+    }
+
+    public CharacterData GetCharacterByName(string name)
+    {
+        foreach (CharacterData character in characterDatas)
+        {
+            if (character.Name == name)
+            {
+                return character;
+            }
+        }
+        Debug.LogWarning("Couldn't find item : " + name);
+        return null;
     }
 
     public MonsterData GetMonsterByName(string name)

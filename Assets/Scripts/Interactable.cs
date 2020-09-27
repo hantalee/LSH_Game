@@ -8,11 +8,11 @@ public class Interactable : MonoBehaviour
     public LayerMask interactLayers;
     public Collider2D[] Targets;
 
-    public bool MakeSureIntaractable()
+    public bool MakeSureIntaractable(string tag)
     {
         foreach (Collider2D target in Targets)
         {
-            if (target.gameObject.tag == "Player")
+            if (target.gameObject.tag == tag)
             {
                 return true;
             }

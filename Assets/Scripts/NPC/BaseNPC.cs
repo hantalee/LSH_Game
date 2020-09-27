@@ -14,7 +14,7 @@ public class BaseNPC : Interactable
 
         if (Input.GetKeyDown(KeyCode.F) && Targets.Length > 0)
         {
-            if (MakeSureIntaractable())
+            if (MakeSureIntaractable("Player"))
                 Interaction();
         }
 

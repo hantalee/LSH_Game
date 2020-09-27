@@ -13,8 +13,11 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            BaseMonster slime = MonsterPooling.Instance.GetMonsterByName("Slime");
-            slime.transform.position = Vector3.zero;
+            //BaseMonster slime = ObjectPooling.Instance.GetMonsterByName("Slime");
+            //slime.transform.position = Vector3.zero;
+
+            BaseCharacter chickenMan = ObjectPooling.Instance.GetCharacterByName("닭");
+            chickenMan.transform.position = Vector3.zero;
         }
     }
 }

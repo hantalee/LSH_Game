@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Id": "Char-001",
+    "Name": "닭",
+    "ClassType": "Attacker",
+    "Stat": {
+      "stats": [
+        {
+          "StatType": "AttackPower",
+          "BaseValue": 5,
+          "StatName": "AttackPower"
+        },
+        {
+          "StatType": "DefensePower",
+          "BaseValue": 5,
+          "StatName": "DefensePower"
+        },
+        {
+          "StatType": "AttackSpeed",
+          "BaseValue": 1,
+          "StatName": "AttackSpeed"
+        },
+        {
+          "StatType": "CriticalChance",
+          "BaseValue": 10,
+          "StatName": "CriticalChance"
+        },
+        {
+          "StatType": "Hp",
+          "BaseValue": 10,
+          "StatName": "Hp"
+        }
+      ]
+    },
+    "Price": "100",
+    "DropChance": "25"
+  }
+]

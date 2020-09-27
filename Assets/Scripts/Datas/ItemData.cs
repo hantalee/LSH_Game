@@ -4,14 +4,14 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
+public enum ItemType
+{
+    Weapon, Consumable, Quest
+}
+
 [System.Serializable]
 public class ItemData
 {
-    public enum ItemType
-    {
-        Weapon, Consumable, Quest
-    }
-
     public string Id { get; set; }
     public string Class { get; set; }
     public string Name { get; set; }

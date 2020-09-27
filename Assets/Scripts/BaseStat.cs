@@ -13,6 +13,7 @@ public class BaseStat
         DefensePower,
         MoveSpeed,
         AttackSpeed,
+        CriticalChance,
         Hp
     }
 
