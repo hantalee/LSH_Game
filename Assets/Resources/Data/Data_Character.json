@@ -1,7 +1,7 @@
 ﻿[
   {
     "Id": "Char-001",
-    "Name": "닭",
+    "Name": "수습 기사",
     "ClassType": "Attacker",
     "Stat": {
       "stats": [

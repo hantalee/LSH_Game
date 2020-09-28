@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : BaseMonster
+public class GreenSlime : BaseMonster
 {
     public override void Init()
     {
-        data = DataManager.Instance.GetMonsterByName("Slime");
+        data = DataManager.Instance.GetMonsterByName("GreenSlime");
         Id = data.Id;
         Name = data.Name;
         Stat = data.Stat;
@@ -21,8 +21,7 @@ public class Slime : BaseMonster
         DropTable = new DropTable();
         DropTable.loots = new List<Loot>()
         {
-            new Loot("IronSword", 70),
-            new Loot("HealthPotion", 50)
+            new Loot("HealthPotion", 10)
         };
     }
 

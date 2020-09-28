@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chicken : BaseCharacter
+public class BrownSlime : BaseMonster
 {
     public override void Init()
     {
-        data = DataManager.Instance.GetCharacterByName("닭");
+        data = DataManager.Instance.GetMonsterByName("BrownSlime");
         Id = data.Id;
         Name = data.Name;
-        Type = data.ClassType;
         Stat = data.Stat;
-        Price = data.Price;
-        DropChance = data.DropChance;
         MaxHealth = data.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
+
+        SetDropTable();
+    }
+
+    public override void SetDropTable()
+    {
+        DropTable = new DropTable();
+        DropTable.loots = new List<Loot>()
+        {
+            new Loot("IronSword", 10),
+            new Loot("HealthPotion", 20)
+        };
     }
 
     public override void Die()

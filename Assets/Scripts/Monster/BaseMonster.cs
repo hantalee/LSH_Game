@@ -51,4 +51,13 @@ public abstract class BaseMonster : MonoBehaviour
             item.ItemData = itemData;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            int damage = data.Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
+    }
 }

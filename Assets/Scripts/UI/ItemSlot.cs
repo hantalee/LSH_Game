@@ -47,14 +47,14 @@ public class ItemSlot : MonoBehaviour
 
         if(itemData.Type == ItemType.Consumable)
         {
-            //사용
+            InventoryController.Instance.ConsumeItem(itemData);
         }
         else if(itemData.Type == ItemType.Weapon)
         {
             InventoryController.Instance.EquipItem(itemData);
-            img_ItemIcon.gameObject.SetActive(false);
-            txt_ItemCount.gameObject.SetActive(false);
-            itemData = null;
         }
+        img_ItemIcon.gameObject.SetActive(false);
+        txt_ItemCount.gameObject.SetActive(false);
+        itemData = null;
     }
 }

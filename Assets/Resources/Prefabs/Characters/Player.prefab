@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6696510888312810764}
   - component: {fileID: 6696510888312810763}
   - component: {fileID: 6696510888312810762}
+  - component: {fileID: 2967124491581036028}
   - component: {fileID: 6696510888312810803}
   m_Layer: 8
   m_Name: Player
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stat:
     stats: []
+  damageText: {fileID: 6859860183295743439, guid: 6e9bb5dfd53f4474489e53d166bf179c, type: 3}
 --- !u!114 &6696510888312810764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +231,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHand: {fileID: 6696510887857479779}
+--- !u!114 &2967124491581036028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696510888312810761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ef29b72a7af01498285cc5038dce8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6696510888312810803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,3 +257,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerItems: []
   weaponController: {fileID: 0}
+  consumableController: {fileID: 0}

@@ -4,15 +4,15 @@
     "Type": "Nomal",
     "SpawnData": [
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 1
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 2
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 3
       }
     ]
@@ -22,15 +22,15 @@
     "Type": "Nomal",
     "SpawnData": [
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 1
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 2
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "GreenSlime",
         "monsterNum": 3
       }
     ]
@@ -40,15 +40,15 @@
     "Type": "Nomal",
     "SpawnData": [
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 1
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 2
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 3
       }
     ]
@@ -58,15 +58,15 @@
     "Type": "Nomal",
     "SpawnData": [
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 1
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 2
       },
       {
-        "monsterName": "Slime",
+        "monsterName": "BrownSlime",
         "monsterNum": 3
       }
     ]
@@ -76,16 +76,16 @@
     "Type": "Store",
     "SpawnData": [
       {
-        "monsterName": "Slime",
-        "monsterNum": 1
+        "monsterName": "GreenSlime",
+        "monsterNum": 4
       },
       {
-        "monsterName": "Slime",
-        "monsterNum": 2
+        "monsterName": "BrownSlime",
+        "monsterNum": 6
       },
       {
-        "monsterName": "Slime",
-        "monsterNum": 3
+        "monsterName": "BrownSlime",
+        "monsterNum": 10
       }
     ]
   }

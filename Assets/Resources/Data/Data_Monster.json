@@ -1,7 +1,7 @@
 [
   {
     "Id": "MONSTER-001",
-    "Name": "Slime",
+    "Name": "GreenSlime",
     "Stat": {
       "stats": [
         {
@@ -34,7 +34,7 @@
   },
   {
     "Id": "MONSTER-002",
-    "Name": "Orc",
+    "Name": "BrownSlime",
     "Stat": {
       "stats": [
         {
