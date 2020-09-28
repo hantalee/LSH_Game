@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterPanel : MonoBehaviour
+public class CharacterStatUI : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    private Player player;
 
     //Stats
     private List<Text> txt_PlayerStat = new List<Text>();
     [SerializeField] private Text txt_PlayerStatPref;
-    [SerializeField] private Transform panel_PlayerStat;
     private void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Player>();
         UIEventHandler.OnPlayerHealthChanged += UpdateHealth;
         UIEventHandler.OnStatsChanged += UpdateStats;
-        InitializeStats();
+        //InitializeStats();
     }
 
     void InitializeStats()
@@ -23,7 +23,7 @@ public class CharacterPanel : MonoBehaviour
         for (int i=0; i < player.Stat.stats.Count; ++i)
         {
             txt_PlayerStat.Add(Instantiate(txt_PlayerStatPref));
-            txt_PlayerStat[i].transform.SetParent(panel_PlayerStat);
+            txt_PlayerStat[i].transform.SetParent(transform);
         }
         UpdateStats();
     }

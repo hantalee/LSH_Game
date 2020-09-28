@@ -21,7 +21,7 @@ public class Slime : BaseMonster
         DropTable = new DropTable();
         DropTable.loots = new List<Loot>()
         {
-            new Loot("IronSword", 50),
+            new Loot("IronSword", 70),
             new Loot("HealthPotion", 50)
         };
     }

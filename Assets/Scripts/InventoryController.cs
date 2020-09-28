@@ -5,6 +5,8 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     public List<ItemData> playerItems = new List<ItemData>();
+    public PlayerWeaponController weaponController;
+
     private static InventoryController instance;
     public static InventoryController Instance
     {
@@ -22,7 +24,13 @@ public class InventoryController : MonoBehaviour
             Destroy(gameObject);
         instance = this;
     }
-    
+
+    private void Start()
+    {
+        weaponController = GetComponent<PlayerWeaponController>();
+        AddItemToInventory("IronSword");
+    }
+
     public void AddItemToInventory(string itemName)
     {
         ItemData itemData = DataManager.Instance.GetItemByName(itemName);
@@ -34,5 +42,10 @@ public class InventoryController : MonoBehaviour
     {
         playerItems.Add(itemData);
         UIEventHandler.ItemAddedToInventory(itemData);
+    }
+
+    public void EquipItem(ItemData itemData)
+    {
+        weaponController.EquipWeapon(itemData);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
     public delegate void SpawnEventHandler(StageData data);
     public static event SpawnEventHandler OnStartSpawn;
@@ -14,8 +14,8 @@ public class SpawnManager : MonoBehaviour
     public bool goNextRound = false;
     private int spawnOver;
 
-    private static SpawnManager instance;
-    public static SpawnManager Instance
+    private static StageManager instance;
+    public static StageManager Instance
     {
         get
         {
@@ -48,6 +48,7 @@ public class SpawnManager : MonoBehaviour
             goNextRound = false;
             currRound += 1;
             currentRound = FindRound(currRound);
+            UIEventHandler.ChangeRound(currRound);
             if(currentRound == null)
             {
                 //스테이지가 끝났음

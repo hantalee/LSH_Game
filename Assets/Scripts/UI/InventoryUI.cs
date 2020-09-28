@@ -7,19 +7,24 @@ public class InventoryUI : MonoBehaviour
     private ItemSlot[] slots;
     public Transform slotHolder;
 
-    void Start()
+    private void Awake()
     {
+        UIEventHandler.OnItemAddedToInventory += ItemAdded;
         slots = slotHolder.GetComponentsInChildren<ItemSlot>();
         for (int i = 0; i < slots.Length; ++i)
         {
             slots[i].itemData = null;
         }
-        UIEventHandler.OnItemAddedToInventory += ItemAdded;
+    }
+
+    void Start()
+    {
+
     }
 
     public void ItemAdded(ItemData itemData)
     {
-        for(int i = 0; i < slots.Length; ++i)
+        for (int i = 0; i < slots.Length; ++i)
         {
             if(slots[i].itemData == null)
             {

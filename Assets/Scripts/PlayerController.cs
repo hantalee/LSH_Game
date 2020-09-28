@@ -26,14 +26,24 @@ public class PlayerController : MonoBehaviour
 
         //Check Walking
         if (Mathf.Abs(rigid.velocity.x) < 0.3f)
-            animator.SetBool("IsWalking", false);
+        {
+            animator.SetBool("IsRun", false);
+        }
         else
-            animator.SetBool("IsWalking", true);
+        {
+            animator.SetBool("IsRun", true);
+        }
 
         if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
-            spriteRenderer.flipX = false;
+        {
+            //spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
         else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-            spriteRenderer.flipX = true;
+        {
+            //spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     private void FixedUpdate()

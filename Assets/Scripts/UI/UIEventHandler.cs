@@ -17,6 +17,9 @@ public class UIEventHandler : MonoBehaviour
     public delegate void UseSkillEventHandler(string skillName);
     public static event UseSkillEventHandler OnUseSkill;
 
+    public delegate void ChangeRoundEventHandler(int round);
+    public static event ChangeRoundEventHandler OnChangeRound;
+
     public static void ItemAddedToInventory(ItemData item)
     {
         OnItemAddedToInventory(item);
@@ -34,11 +37,16 @@ public class UIEventHandler : MonoBehaviour
 
     public static void StatsChanged()
     {
-        OnStatsChanged();
+        //OnStatsChanged();
     }
 
     public static void UseSkill(string skillName)
     {
         OnUseSkill(skillName);
+    }
+
+    public static void ChangeRound(int round)
+    {
+        OnChangeRound(round);
     }
 }

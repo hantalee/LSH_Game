@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         currentTime = spawnDelay;
-        SpawnManager.OnStartSpawn += StartWave;
+        StageManager.OnStartSpawn += StartWave;
     }
 
     private void Update()
@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            SpawnManager.Instance.CheckSpawnOver();
+            StageManager.Instance.CheckSpawnOver();
         }
     }
 

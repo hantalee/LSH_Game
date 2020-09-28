@@ -8,12 +8,21 @@ public class ItemSlot : MonoBehaviour
     public ItemData itemData;
     public Text txt_ItemCount;
     public Image img_ItemIcon;
+    private Button btn;
 
-    private void Start()
+    private void Awake()
     {
         img_ItemIcon.gameObject.SetActive(false);
         txt_ItemCount.text = 0.ToString();
         txt_ItemCount.gameObject.SetActive(false);
+
+        btn = GetComponent<Button>();
+        btn.onClick.AddListener(OnItemInteract);
+    }
+
+    private void Start()
+    {
+
     }
 
     public void SetItem(ItemData itemData)
@@ -29,5 +38,23 @@ public class ItemSlot : MonoBehaviour
     void InitItemValues()
     {
         img_ItemIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + itemData.Class);
+    }
+
+    public void OnItemInteract()
+    {
+        if (itemData == null)
+            return;
+
+        if(itemData.Type == ItemType.Consumable)
+        {
+            //사용
+        }
+        else if(itemData.Type == ItemType.Weapon)
+        {
+            InventoryController.Instance.EquipItem(itemData);
+            img_ItemIcon.gameObject.SetActive(false);
+            txt_ItemCount.gameObject.SetActive(false);
+            itemData = null;
+        }
     }
 }
