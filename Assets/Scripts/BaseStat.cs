@@ -14,7 +14,8 @@ public class BaseStat
         MoveSpeed,
         AttackSpeed,
         CriticalChance,
-        Hp
+        Hp,
+        Mp
     }
 
     [JsonIgnore]

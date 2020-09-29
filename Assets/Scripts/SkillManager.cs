@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadScene : Lobby
+/// </summary>
 public class SkillManager : MonoBehaviour
 {
-    public List<BaseSkill> skills = new List<BaseSkill>();
-    public List<BaseSkill> usedSkills = new List<BaseSkill>();
+    private List<BaseSkill> skills = new List<BaseSkill>();
+    private List<BaseSkill> usedSkills = new List<BaseSkill>();
+
+    public List<BaseSkill> Skills { get => skills; }
+    public List<BaseSkill> UsedSkills { get => usedSkills; }
 
     private static SkillManager instance;
     public static SkillManager Instance 
@@ -18,11 +24,14 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+
+
     private void Awake()
     {
         if (instance != null)
             Destroy(this);
         instance = this;
+        DontDestroyOnLoad(gameObject);
 
         LoadPrefabs();
     }
@@ -32,19 +41,32 @@ public class SkillManager : MonoBehaviour
         BaseSkill[] prefs = Resources.LoadAll<BaseSkill>("Skills/");
         for (int i = 0; i < prefs.Length; ++i)
         {
-            skills.Add(Instantiate(prefs[i]));
-            skills[i].transform.SetParent(gameObject.transform);
-            skills[i].Init();
+            Skills.Add(Instantiate(prefs[i]));
+            Skills[i].transform.SetParent(gameObject.transform);
+            Skills[i].Init();
+        }
+    }
+
+    public void RandomPeek(int num)
+    {
+        for(int i = 0; i < num; ++i)
+        {
+            if (Skills.Count < i + 1)
+                break;
+
+            int random = Random.Range(0, Skills.Count);
+            string randomName = Skills[random].Data.Name;
+            ActivateSkillByName(randomName);
         }
     }
 
     public void ActivateSkillByName(string skillName)
     {
-        BaseSkill skill = skills.Find(x => (x.Data.Name == skillName));
+        BaseSkill skill = Skills.Find(x => (x.Data.Name == skillName));
         if (skill != null)
         {
             skill.Activation();
-            usedSkills.Add(skill);
+            UsedSkills.Add(skill);
         }
         else
             Debug.LogWarning("Couldn't find skill : " + skillName);
@@ -52,7 +74,7 @@ public class SkillManager : MonoBehaviour
 
     public void UseSkillByName(string skillName)
     {
-        BaseSkill skill = usedSkills.Find(x => (x.Data.Name == skillName));
+        BaseSkill skill = UsedSkills.Find(x => (x.Data.Name == skillName));
         if (skill != null)
         {
             skill.Use();
@@ -60,9 +82,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void DeleteSkillByName(string skillName)
+    public void DeActivatSkillByName(string skillName)
     {
-        BaseSkill skill = usedSkills.Find(x => (x.Data.Name == skillName));
+        BaseSkill skill = UsedSkills.Find(x => (x.Data.Name == skillName));
         if (skill != null)
             skill.DeActivation();
     }

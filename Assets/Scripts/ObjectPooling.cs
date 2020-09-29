@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// LoadScene : Lobby
+/// </summary>
 public class ObjectPooling : MonoBehaviour
 {
     public List<Queue<BaseCharacter>> CharacterPool = new List<Queue<BaseCharacter>>();
@@ -26,8 +29,9 @@ public class ObjectPooling : MonoBehaviour
         if (instance != null)
             Destroy(gameObject);
         instance = this;
+        DontDestroyOnLoad(gameObject);
 
-        InitCharacter(5);
+        InitCharacter(1);
         InitMonster(5);
     }
 
@@ -91,7 +95,8 @@ public class ObjectPooling : MonoBehaviour
 
 
     /// <summary>
-    /// Get()
+    /// 오브젝트 풀에서 오브젝트를 찾아 씬에 나타나게 합니다.
+    /// 풀에 들어있던 오브젝트 보다 더 많은 오브젝트가 필요하게 되면 추가로 생성합니다.
     /// </summary>
     public BaseCharacter GetCharacterByName(string name)
     {

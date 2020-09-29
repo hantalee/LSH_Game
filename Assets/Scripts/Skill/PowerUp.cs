@@ -23,7 +23,6 @@ public class PowerUp : BaseSkill
         Data = DataManager.Instance.GetSkillDataByName("Power Up");
         gameObject.SetActive(false);
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Stat = new BaseStat(BaseStat.BaseStatType.AttackPower, 10, "PowerUpBuff");
     }
 
@@ -31,7 +30,7 @@ public class PowerUp : BaseSkill
     {
         if (!gameObject.activeSelf)
             return;
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         player.Stat.AddBonusStat(Stat);
     }
 }

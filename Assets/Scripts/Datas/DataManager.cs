@@ -5,6 +5,10 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 
+/// <summary>
+/// LoadScene : Lobby
+/// </summary>
+
 [System.Serializable]
 public class Serialization<T>
 {
@@ -14,7 +18,6 @@ public class Serialization<T>
         target = _target;
     }
 }
-
     
 public class DataManager : MonoBehaviour
 {
@@ -50,8 +53,8 @@ public class DataManager : MonoBehaviour
     {
         if (instance != null)
             Destroy(this);
-
         instance = this;
+        DontDestroyOnLoad(gameObject);
 
         savePath = Application.persistentDataPath;
         BuildDataBase();

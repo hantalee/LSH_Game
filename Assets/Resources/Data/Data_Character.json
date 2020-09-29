@@ -27,8 +27,13 @@
         },
         {
           "StatType": "Hp",
-          "BaseValue": 10,
+          "BaseValue": 30,
           "StatName": "Hp"
+        },
+        {
+          "StatType": "Mp",
+          "BaseValue": 30,
+          "StatName": "Mp"
         }
       ]
     },

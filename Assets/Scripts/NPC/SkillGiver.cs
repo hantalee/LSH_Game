@@ -11,10 +11,10 @@ public class SkillGiver : BaseNPC
     void Start()
     {
         skillMgr = SkillManager.Instance;
-        skillsName = new string[skillMgr.skills.Count];
-        for (int i = 0; i < skillMgr.skills.Count; ++i)
+        skillsName = new string[skillMgr.Skills.Count];
+        for (int i = 0; i < skillMgr.Skills.Count; ++i)
         {
-            skillsName[i] = skillMgr.skills[i].Data.Name;
+            skillsName[i] = skillMgr.Skills[i].Data.Name;
         }
     }
 
