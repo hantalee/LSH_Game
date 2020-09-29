@@ -5,6 +5,17 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 
+[System.Serializable]
+public class Serialization<T>
+{
+    public List<T> target;
+    public Serialization(List<T> _target)
+    {
+        target = _target;
+    }
+}
+
+    
 public class DataManager : MonoBehaviour
 {
     /// <데이터 리스트>
@@ -22,6 +33,8 @@ public class DataManager : MonoBehaviour
 
     /// </데이터 리스트>
 
+    private string savePath;
+
     private static DataManager instance;
     public static DataManager Instance
     {
@@ -33,7 +46,6 @@ public class DataManager : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         if (instance != null)
@@ -41,16 +53,55 @@ public class DataManager : MonoBehaviour
 
         instance = this;
 
+        savePath = Application.persistentDataPath;
         BuildDataBase();
     }
 
     void BuildDataBase()
     {
-        characterDatas = LoadJsonFile<CharacterData>("Data_Character");
-        monsterDatas = LoadJsonFile<MonsterData>("Data_Monster");
-        itemDatas = LoadJsonFile<ItemData>("Data_Item");
-        skillDatas = LoadJsonFile<SkillData>("Data_Skill");
-        stageDatas = LoadJsonFile<StageData>("Data_Stage");
+        //SaveFiles();
+        LoadFiles();
+    }
+
+    void LoadFiles()
+    {
+        characterDatas = Load<CharacterData>("Data_Character");
+        monsterDatas = Load<MonsterData>("Data_Monster");
+        itemDatas = Load<ItemData>("Data_Item");
+        skillDatas = Load<SkillData>("Data_Skill");
+        stageDatas = Load<StageData>("Data_Stage");
+    }
+
+    void SaveFiles()
+    {
+        Save<CharacterData>(characterDatas, "Data_Character");
+        Save<MonsterData>(monsterDatas, "Data_Monster");
+        Save<ItemData>(itemDatas, "Data_Item");
+        Save<SkillData>(skillDatas, "Data_Skill");
+        Save<StageData>(stageDatas, "Data_Stage");
+    }
+
+    void Save<T>(List<T> dataList, string fileName)
+    {
+        string jsonData = ObjectToJson(new Serialization<T>(dataList));
+        File.WriteAllText(savePath + "/" + fileName + ".txt", jsonData);
+    }
+
+    List<T> Load<T>(string fileName)
+    {
+        if(!File.Exists(savePath + "/" + fileName + ".txt"))
+        {
+            Debug.LogError(savePath + "에 있는 " + fileName + "을 찾지 못하였습니다.");
+            return null;
+        }
+
+        string jsonData = File.ReadAllText(savePath + "/" + fileName + ".txt");
+        return JsonToObject<Serialization<T>>(jsonData).target;
+    }
+
+    List<T> LoadJsonFile<T>(string fileName)
+    {
+        return JsonConvert.DeserializeObject<List<T>>(Resources.Load<TextAsset>("Data/" + fileName).ToString());
     }
 
     public CharacterData GetCharacterByName(string name)
@@ -134,10 +185,5 @@ public class DataManager : MonoBehaviour
         byte[] data = Encoding.UTF8.GetBytes(jsonData);
         fs.Write(data, 0, data.Length);
         fs.Close();
-    }
-
-    List<T> LoadJsonFile<T>(string fileName)
-    {
-        return JsonConvert.DeserializeObject<List<T>>(Resources.Load<TextAsset>("Data/" + fileName).ToString());
     }
 }

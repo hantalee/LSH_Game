@@ -57,7 +57,7 @@ public abstract class BaseMonster : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             int damage = data.Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+            //collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
 }
