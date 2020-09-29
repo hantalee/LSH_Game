@@ -11,7 +11,12 @@ public class PlayerWeaponController : MonoBehaviour
     private BaseWeapon equippedWeapon;  //현재 장착중인 아이템
     private CharacterStat characterStats;
 
-    void Start()
+    private void Awake()
+    {   
+        playerHand = transform.Find("Hand").gameObject;
+    }
+
+    private void Start()
     {
         characterStats = GetComponent<Player>().Stat;
     }

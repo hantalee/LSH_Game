@@ -32,6 +32,10 @@ public class SceneController : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //레벨 변경시 호출
+        if(scene.name == "MainGame")
+        {
+            CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<Player>();
+            CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<PlayerController>();
+        }
     }
 }

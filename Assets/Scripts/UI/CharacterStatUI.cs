@@ -12,7 +12,7 @@ public class CharacterStatUI : MonoBehaviour
     [SerializeField] private Text txt_PlayerStatPref;
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         UIEventHandler.OnPlayerHealthChanged += UpdateHealth;
         UIEventHandler.OnStatsChanged += UpdateStats;
         //InitializeStats();

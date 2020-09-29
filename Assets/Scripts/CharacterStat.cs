@@ -7,7 +7,7 @@ public class CharacterStat
 {
     public List<BaseStat> stats;
 
-    public CharacterStat(int atkPower, int DfPower, int moveSpeed, int atkSpeed, int hp)
+    public CharacterStat(int atkPower, int DfPower, int moveSpeed, int atkSpeed, int hp, int mp)
     {
         stats = new List<BaseStat>()
         {
@@ -16,6 +16,7 @@ public class CharacterStat
             new BaseStat(BaseStat.BaseStatType.MoveSpeed, moveSpeed, "MoveSpeed"),
             new BaseStat(BaseStat.BaseStatType.AttackSpeed, atkSpeed, "AttackSpeed"),
             new BaseStat(BaseStat.BaseStatType.Hp, hp, "Hp"),
+            new BaseStat(BaseStat.BaseStatType.Mp, mp, "Mp")
         };
     }
 

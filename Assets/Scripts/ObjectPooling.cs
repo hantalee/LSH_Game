@@ -100,7 +100,7 @@ public class ObjectPooling : MonoBehaviour
     /// </summary>
     public BaseCharacter GetCharacterByName(string name)
     {
-        Queue<BaseCharacter> pool = CharacterPool.Find(x => (x.Peek().Name == name));
+        Queue<BaseCharacter> pool = CharacterPool.Find(x => (x.Peek().Data.Name == name));
         if (pool.Count > 1)
         {
             BaseCharacter character = pool.Dequeue();
@@ -112,7 +112,7 @@ public class ObjectPooling : MonoBehaviour
         {
             for (int i = 0; i < CharacterPrefabs.Length; ++i)
             {
-                if (CharacterPrefabs[i].Name == name)
+                if (CharacterPrefabs[i].Data.Name == name)
                 {
                     BaseCharacter character = CreateNewCharacter(CharacterPrefabs[i]);
                     character.transform.SetParent(null);
@@ -158,7 +158,7 @@ public class ObjectPooling : MonoBehaviour
     {
         character.gameObject.SetActive(false);
         character.transform.SetParent(transform);
-        Queue<BaseCharacter> pool = CharacterPool.Find(x => (x.Peek().Name == character.Name));
+        Queue<BaseCharacter> pool = CharacterPool.Find(x => (x.Peek().Data.Name == character.Data.Name));
         pool.Enqueue(character);
     }
 

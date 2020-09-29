@@ -68,11 +68,11 @@ public class DataManager : MonoBehaviour
 
     void LoadFiles()
     {
-        characterDatas = Load<CharacterData>("Data_Character");
-        monsterDatas = Load<MonsterData>("Data_Monster");
-        itemDatas = Load<ItemData>("Data_Item");
-        skillDatas = Load<SkillData>("Data_Skill");
-        stageDatas = Load<StageData>("Data_Stage");
+        characterDatas = LoadJsonFile<CharacterData>("Data_Character");
+        monsterDatas = LoadJsonFile<MonsterData>("Data_Monster");
+        itemDatas = LoadJsonFile<ItemData>("Data_Item");
+        skillDatas = LoadJsonFile<SkillData>("Data_Skill");
+        stageDatas = LoadJsonFile<StageData>("Data_Stage");
     }
 
     void SaveFiles()
@@ -102,9 +102,20 @@ public class DataManager : MonoBehaviour
         return JsonToObject<Serialization<T>>(jsonData).target;
     }
 
+    //List<T> LoadJsonFile<T>(string fileName)
+    //{
+    //    return JsonConvert.DeserializeObject<List<T>>(Resources.Load<TextAsset>("Data/" + fileName).ToString());
+    //}
+
     List<T> LoadJsonFile<T>(string fileName)
     {
-        return JsonConvert.DeserializeObject<List<T>>(Resources.Load<TextAsset>("Data/" + fileName).ToString());
+        FileStream fs = new FileStream(string.Format("{0}/{1}.json", savePath, fileName), FileMode.Open);
+        byte[] data = new byte[fs.Length];
+        fs.Read(data, 0, data.Length);
+        fs.Close();
+
+        string jsonData = Encoding.UTF8.GetString(data);
+        return JsonConvert.DeserializeObject<List<T>>(jsonData);
     }
 
     public CharacterData GetCharacterByName(string name)

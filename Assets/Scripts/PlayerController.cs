@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigid;
     Animator animator;
 
-    public float maxSpeed = 0.0f;
+    public float maxSpeed;
 
     private void Awake()
     {
@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        rigid.gravityScale = 1;
+        maxSpeed = player.Stat.GetStat(BaseStat.BaseStatType.MoveSpeed).GetFinalValue();
     }
 
     private void Update()

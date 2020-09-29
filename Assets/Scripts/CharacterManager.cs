@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    [SerializeField] private BaseCharacter usedCahracter;
-    public BaseCharacter UsedCahracter { get => usedCahracter; }
+    [SerializeField] private BaseCharacter usedCharacter;
+    public BaseCharacter UsedCharacter { get => usedCharacter; }
 
     private static CharacterManager instance;
     public static CharacterManager Instance
@@ -17,8 +17,6 @@ public class CharacterManager : MonoBehaviour
             return null;
         }
     }
-
-
 
     private void Awake()
     {
@@ -32,8 +30,8 @@ public class CharacterManager : MonoBehaviour
     {
         List<Queue<BaseCharacter>> pool = ObjectPooling.Instance.CharacterPool;
         int random = Random.Range(0, pool.Count);
-        string randomName = pool[random].Peek().Name;
+        string randomName = pool[random].Peek().Data.Name;
 
-        usedCahracter =  ObjectPooling.Instance.GetCharacterByName(randomName);
+        usedCharacter =  ObjectPooling.Instance.GetCharacterByName(randomName);
     }
 }

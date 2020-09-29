@@ -11,6 +11,11 @@ public class CharacterStateUI : MonoBehaviour
 
     private void Awake()
     {
+
+    }
+
+    private void Start()
+    {
         UIEventHandler.OnPlayerRecovery += CheckPlayerHealthChange;
         UIEventHandler.OnPlayerTakeDamage += CheckPlayerHealthChange;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

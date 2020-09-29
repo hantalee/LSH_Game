@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InventoryController), typeof(PlayerSkillController))]
+[RequireComponent(typeof(PlayerWeaponController), typeof(PlayerConsumableController))]
 public class Player : MonoBehaviour
 {
+    public BaseCharacter character;
     public CharacterStat Stat;
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
@@ -12,17 +15,16 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Stat = new CharacterStat(1, 0, 3, 1, 500);
+        character = GetComponent<BaseCharacter>();
+        Stat = character.Data.Stat;
         MaxHealth = Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
+
+        damageText = Resources.Load<GameObject>("Prefabs/DamageText");
     }
     void Start()
     {
         UIEventHandler.PlayerRecovery();
-    }
-
-    public void PerformAttack()
-    {
     }
 
     public void TakeDamage(int amount)
