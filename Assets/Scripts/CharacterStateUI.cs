@@ -24,9 +24,12 @@ public class CharacterStateUI : MonoBehaviour
 
     void CheckPlayerHealthChange()
     {
-        int max = player.MaxHealth;
-        int curr = player.CurrentHealth;
+        int maxHp = player.MaxHealth;
+        int currHp = player.CurrentHealth;
+        int maxMp = player.MaxMana;
+        int currMp = player.CurrentMana;
 
-        HealthSlider.value = (((float)curr / (float)max) * 100.0f);
+        HealthSlider.value = (((float)currHp / (float)maxHp) * 100.0f);
+        ManaSlider.value = (((float)currMp / (float)maxMp) * 100.0f);
     }
 }

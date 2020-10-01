@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public CharacterStat Stat;
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; set; }
+    public int CurrentMana { get; set; }
+    public int MaxMana { get; set; }
 
     public GameObject damageText;
 
@@ -18,7 +20,9 @@ public class Player : MonoBehaviour
         character = GetComponent<BaseCharacter>();
         Stat = character.Data.Stat;
         MaxHealth = Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
+        MaxMana = Stat.GetStat(BaseStat.BaseStatType.Mp).GetFinalValue();
         CurrentHealth = MaxHealth;
+        CurrentMana = MaxMana;
 
         damageText = Resources.Load<GameObject>("Prefabs/DamageText");
     }
