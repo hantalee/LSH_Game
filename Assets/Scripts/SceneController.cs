@@ -25,6 +25,7 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    //에디터에서 버튼의 OnClick으로 호출
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);    

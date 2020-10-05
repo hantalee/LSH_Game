@@ -9,11 +9,6 @@ public class CharacterStateUI : MonoBehaviour
     public Slider HealthSlider;
     public Slider ManaSlider;
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         UIEventHandler.OnPlayerRecovery += CheckPlayerHealthChange;

@@ -20,11 +20,6 @@ public class ItemSlot : MonoBehaviour
         btn.onClick.AddListener(OnItemInteract);
     }
 
-    private void Start()
-    {
-
-    }
-
     public void SetItem(ItemData itemData)
     {
         this.itemData = itemData;
