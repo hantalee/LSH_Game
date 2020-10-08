@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public int MaxMana { get; set; }
 
     public GameObject damageText;
+    public bool IsDead { get; set; }
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         MaxMana = Stat.GetStat(BaseStat.BaseStatType.Mp).GetFinalValue();
         CurrentHealth = MaxHealth;
         CurrentMana = MaxMana;
+        IsDead = false;
 
         damageText = Resources.Load<GameObject>("Prefabs/DamageText");
     }
@@ -47,5 +49,6 @@ public class Player : MonoBehaviour
     public void Die()
     {
         Debug.Log("플레이어 사망");
+        IsDead = true;
     }
 }

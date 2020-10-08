@@ -154,5 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acb317405d7fbc4fa1ad773c7f307c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  isDead: 0
   damageText: {fileID: 6859860183295743439, guid: 6e9bb5dfd53f4474489e53d166bf179c, type: 3}
   prefPickupItem: {fileID: 6154023126471139721, guid: 68ff6a63041d8e045b92fcce5513c024, type: 3}

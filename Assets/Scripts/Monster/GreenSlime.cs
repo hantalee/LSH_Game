@@ -12,6 +12,7 @@ public class GreenSlime : BaseMonster
         Stat = data.Stat;
         MaxHealth = data.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
         CurrentHealth = MaxHealth;
+        isDead = false;
 
         SetDropTable();
     }

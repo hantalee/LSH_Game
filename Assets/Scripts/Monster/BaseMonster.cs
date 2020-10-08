@@ -12,6 +12,8 @@ public abstract class BaseMonster : MonoBehaviour
     public int MaxHealth { get; set; }
     public int CurrentHealth { get; set; }
 
+    public bool isDead = false;
+
     public GameObject damageText;
 
     public PickupItem prefPickupItem;
@@ -23,6 +25,7 @@ public abstract class BaseMonster : MonoBehaviour
     public virtual void Die()
     {
         DropLoot();
+        isDead = true;
         ObjectPooling.Instance.ReturnMonster(this);
     }
     public virtual void TakeDamage(int amount)
@@ -39,7 +42,6 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void PerformAttack()
     {
-
     }
 
     protected virtual void DropLoot()
@@ -57,7 +59,7 @@ public abstract class BaseMonster : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             int damage = data.Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
-            //collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
 }
