@@ -74,6 +74,8 @@ public class ObjectPooling : MonoBehaviour
 
     /// <summary>
     /// Create()
+    /// Prefab에서 Init()를 실행 해주고 복사해서 생성해도
+    /// Init 되지 않은 상태로 만들어지기 때문에 한번더 Init를 해줘야 한다.
     /// </summary>
     private BaseCharacter CreateNewCharacter(BaseCharacter prefab)
     {

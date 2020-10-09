@@ -58,6 +58,5 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if(rigid.velocity.x < -maxSpeed)
             rigid.velocity = new Vector2(-maxSpeed, rigid.velocity.y);
-
     }
 }

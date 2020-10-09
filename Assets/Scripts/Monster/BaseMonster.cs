@@ -16,6 +16,10 @@ public abstract class BaseMonster : MonoBehaviour
 
     public GameObject damageText;
 
+    public Transform attackPoint;
+    public float attackRadius = 1.0f;
+    public LayerMask layerMask;
+
     public PickupItem prefPickupItem;
     public DropTable DropTable { get; set; }
 
@@ -28,6 +32,7 @@ public abstract class BaseMonster : MonoBehaviour
         isDead = true;
         ObjectPooling.Instance.ReturnMonster(this);
     }
+
     public virtual void TakeDamage(int amount)
     {
         GameObject tempText = Instantiate(damageText);
@@ -42,6 +47,17 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void PerformAttack()
     {
+       Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, layerMask);
+        foreach (Collider2D target in targets)
+        {
+            if(target.CompareTag("Player"))
+            {
+                Player player = target.gameObject.GetComponent<Player>();
+
+                int damage = data.Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
+                player.TakeDamage(damage);
+            }
+        }
     }
 
     protected virtual void DropLoot()
@@ -54,12 +70,11 @@ public abstract class BaseMonster : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnDrawGizmosSelected()
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            int damage = data.Stat.GetStat(BaseStat.BaseStatType.AttackPower).GetFinalValue();
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
-        }
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }
