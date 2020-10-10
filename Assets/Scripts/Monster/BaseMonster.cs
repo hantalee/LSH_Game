@@ -20,17 +20,23 @@ public abstract class BaseMonster : MonoBehaviour
     public float attackRadius = 1.0f;
     public LayerMask layerMask;
 
+    public IFSM FSM;
     public PickupItem prefPickupItem;
     public DropTable DropTable { get; set; }
 
     public abstract void Init();
     public abstract void SetDropTable();
 
+    private void Awake()
+    {
+        FSM = GetComponent<IFSM>();
+    }
+
     public virtual void Die()
     {
         DropLoot();
         isDead = true;
-        ObjectPooling.Instance.ReturnMonster(this);
+        FSM.ChangeState(State.Die);
     }
 
     public virtual void TakeDamage(int amount)
@@ -38,6 +44,8 @@ public abstract class BaseMonster : MonoBehaviour
         GameObject tempText = Instantiate(damageText);
         tempText.transform.position = gameObject.transform.position;
         tempText.GetComponent<DamageText>().damage = amount;
+        FSM.ChangeState(State.Hit);
+
         CurrentHealth -= amount;
         if (CurrentHealth <= 0)
         {

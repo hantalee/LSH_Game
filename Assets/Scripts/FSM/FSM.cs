@@ -5,6 +5,7 @@ using UnityEngine;
 public enum State
 {
     Idle,
+    Ready,
     Move,
     Attack,
     Hit,
