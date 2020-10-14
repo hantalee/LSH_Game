@@ -17,11 +17,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-
-    }
-
     public void ItemAdded(ItemData itemData)
     {
         for (int i = 0; i < slots.Length; ++i)

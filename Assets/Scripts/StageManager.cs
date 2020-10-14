@@ -14,6 +14,8 @@ public class StageManager : MonoBehaviour
     public bool goNextRound = false;
     private int spawnOver;
 
+    public SkillGiver giver;
+
     private static StageManager instance;
     public static StageManager Instance
     {
@@ -55,10 +57,10 @@ public class StageManager : MonoBehaviour
                 Debug.Log("모든 라운드가 끝났습니다");
                 goNextRound = false;
             }
-            else if(currentRound.Type == RoundType.Store)
+            else if(currentRound.Type == RoundType.SkillGiver)
             {
-                //상점 UI호출
-                Debug.Log("상점 호출");
+                Debug.Log("스킬 주는 라운드");
+                giver.ActivateSkillGiver();
                 goNextRound = false;
             }
             else

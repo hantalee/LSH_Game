@@ -10,6 +10,7 @@ public enum State
     Attack,
     Hit,
     Die,
+    Give,
     End
 }
 

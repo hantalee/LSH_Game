@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 
 public enum RoundType
 {
-    Nomal, Store, Boss
+    Nomal, SkillGiver, Boss
 }
 
 [System.Serializable]

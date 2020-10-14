@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class SkillGiver : BaseNPC
 {
-    SkillManager skillMgr;
-    public string[] skillsName;
-    public int skillCount = 1;
+    public BaseSkill skill;
+    public PickupSkill prefPickupSkill;
+    public SkillGiverFSM FSM;
 
-    void Start()
+    private void Awake()
     {
-        skillMgr = SkillManager.Instance;
-        skillsName = new string[skillMgr.Skills.Count];
-        for (int i = 0; i < skillMgr.Skills.Count; ++i)
-        {
-            skillsName[i] = skillMgr.Skills[i].Data.Name;
-        }
+        FSM = GetComponent<SkillGiverFSM>();
     }
 
-    public override void Interaction()
+    public void ActivateSkillGiver()
     {
-        base.Interaction();
+        if (skill != null)
+            skill = null;
 
-        for(int i = 0; i < skillCount; ++i)
-        {
-            int randomSkill = Random.Range(0, skillsName.Length);
-            skillMgr.ActivateSkillByName(skillsName[randomSkill]);
-            skillMgr.UseSkillByName(skillsName[randomSkill]);
-        }
+        Debug.Log("ActivateSkillGiver");
+        skill = SkillManager.Instance.GetRandomSkill();
+        FSM.isGiveSkill = false;
+    }
+
+    public void GiveSkill()
+    {
+        PickupSkill prefSkill = Instantiate(prefPickupSkill, transform.position, Quaternion.identity);
+        prefSkill.Skill = skill;
+        FSM.isGiveSkill = true;
     }
 }

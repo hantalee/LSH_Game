@@ -24,8 +24,6 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-
-
     private void Awake()
     {
         if (instance != null)
@@ -45,6 +43,14 @@ public class SkillManager : MonoBehaviour
             Skills[i].transform.SetParent(gameObject.transform);
             Skills[i].Init();
         }
+    }
+
+    public BaseSkill GetRandomSkill()
+    {
+        int random = Random.Range(0, Skills.Count);
+        BaseSkill randomSkill = Skills[random];
+
+        return randomSkill;
     }
 
     public void RandomPeek(int num)

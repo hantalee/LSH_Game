@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 3898512321376346427}
   - component: {fileID: 3898512321376346424}
   - component: {fileID: 3898512321376346423}
-  - component: {fileID: 3898512321376346426}
   - component: {fileID: 3898512321376346420}
+  - component: {fileID: 3898512321376346426}
+  - component: {fileID: 6361489433364691516}
   m_Layer: 9
-  m_Name: Npc
-  m_TagString: Untagged
+  m_Name: SkillGiver
+  m_TagString: Interactor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +127,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!70 &3898512321376346420
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898512321376346425}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1.4375}
+  m_Direction: 0
 --- !u!114 &3898512321376346426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,21 +165,23 @@ MonoBehaviour:
   - "\uC2A4\uD0AC \uBC30\uC6B0\uACE0 \uAC08\uB798?"
   - "\uB69C\uBE44\uB69C\uBC25\uB69C\uBE44\uB69C\uBC25\uBC14"
   name: "\uACFC\uC678\uC120\uC0DD"
-  skillsName: []
-  skillCount: 1
---- !u!70 &3898512321376346420
-CapsuleCollider2D:
+  skill: {fileID: 0}
+  prefPickupSkill: {fileID: 0}
+--- !u!114 &6361489433364691516
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3898512321376346425}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1.4375}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ea5d51ec91d524db3df1c2981213fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currState: 0
+  prevState: 0
+  animator: {fileID: 0}
+  giver: {fileID: 0}
+  target: {fileID: 0}
+  targetTransform: {fileID: 0}
