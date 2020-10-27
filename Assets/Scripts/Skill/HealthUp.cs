@@ -33,5 +33,8 @@ public class HealthUp : BaseSkill
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         player.Stat.AddBonusStat(Stat);
+        player.CurrentHealth += Stat.BaseValue;
+        player.MaxHealth = player.Stat.GetStat(BaseStat.BaseStatType.Hp).GetFinalValue();
+        UIEventHandler.PlayerRecovery();
     }
 }

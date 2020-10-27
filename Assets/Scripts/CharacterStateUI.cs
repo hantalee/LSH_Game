@@ -8,6 +8,8 @@ public class CharacterStateUI : MonoBehaviour
     private Player player;
     public Slider HealthSlider;
     public Slider ManaSlider;
+    public Text HealthText;
+    public Text ManaText;
 
     private void Start()
     {
@@ -23,6 +25,9 @@ public class CharacterStateUI : MonoBehaviour
         int currHp = player.CurrentHealth;
         int maxMp = player.MaxMana;
         int currMp = player.CurrentMana;
+
+        HealthText.text = currHp.ToString() + " / " + maxHp.ToString();
+        ManaText.text = currMp.ToString() + " / " + maxMp.ToString();
 
         HealthSlider.value = (((float)currHp / (float)maxHp) * 100.0f);
         ManaSlider.value = (((float)currMp / (float)maxMp) * 100.0f);
