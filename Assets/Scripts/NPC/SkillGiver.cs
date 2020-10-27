@@ -18,7 +18,6 @@ public class SkillGiver : BaseNPC
         if (skill != null)
             skill = null;
 
-        Debug.Log("ActivateSkillGiver");
         skill = SkillManager.Instance.GetRandomSkill();
         FSM.isGiveSkill = false;
     }
@@ -27,6 +26,9 @@ public class SkillGiver : BaseNPC
     {
         PickupSkill prefSkill = Instantiate(prefPickupSkill, transform.position, Quaternion.identity);
         prefSkill.Skill = skill;
+        Rigidbody2D rigid = prefSkill.gameObject.GetComponent<Rigidbody2D>();
+        rigid.AddForce(Vector2.up * 2);
+
         FSM.isGiveSkill = true;
     }
 }

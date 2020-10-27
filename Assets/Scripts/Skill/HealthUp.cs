@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : BaseSkill
+public class HealthUp : BaseSkill
 {
     private Player player;
     private BaseStat Stat;
@@ -20,10 +20,10 @@ public class PowerUp : BaseSkill
 
     public override void Init()
     {
-        Data = DataManager.Instance.GetSkillDataByName("Power Up");
+        Data = DataManager.Instance.GetSkillDataByName("Health Up");
         gameObject.SetActive(false);
 
-        Stat = new BaseStat(BaseStat.BaseStatType.AttackPower, 10, "PowerUpBuff");
+        Stat = new BaseStat(BaseStat.BaseStatType.Hp, 50, "HealthUpBuff");
     }
 
     public override void Use()

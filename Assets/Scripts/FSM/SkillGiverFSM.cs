@@ -101,7 +101,6 @@ public class SkillGiverIdle : FSM<SkillGiverFSM>
     public override void Begine()
     {
         owner.currState = State.Idle;
-        Debug.Log("Idle");
     }
 
     public override void Run()
@@ -148,7 +147,6 @@ public class SkillGiverReady : FSM<SkillGiverFSM>
     public override void Begine()
     {
         owner.currState = State.Ready;
-        Debug.Log("Ready");
     }
 
     public override void Run()
@@ -183,7 +181,6 @@ public class SkillGiverMove : FSM<SkillGiverFSM>
     public override void Begine()
     {
         owner.currState = State.Move;
-        Debug.Log("Move");
     }
 
     public override void Run()
@@ -231,7 +228,6 @@ public class SkillGiverGiveSkill : FSM<SkillGiverFSM>
     public override void Begine()
     {
         owner.currState = State.Give;
-        Debug.Log("GiveSkill");
     }
 
     public override void Run()

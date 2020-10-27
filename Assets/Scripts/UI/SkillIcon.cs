@@ -17,3 +17,4 @@ public class SkillIcon : MonoBehaviour
         img.sprite = Resources.Load<Sprite>("UI/Icons/Skills/" + skillName);
     }
 }
+
