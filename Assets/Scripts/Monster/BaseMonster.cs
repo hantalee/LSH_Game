@@ -35,7 +35,6 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log("is dead!");
         DropLoot();
         isDead = true;
         spawner.monsterCount -= 1;
@@ -45,6 +44,9 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
+        if (isDead)
+            return;
+
         GameObject tempText = Instantiate(damageText);
         tempText.transform.position = gameObject.transform.position;
         tempText.GetComponent<DamageText>().damage = amount;
