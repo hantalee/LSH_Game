@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5349463356701096897}
   - component: {fileID: 5349463356701096896}
   - component: {fileID: 2660740486281165525}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pig
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -194,6 +194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   prefPickupItem: {fileID: 6154023126471139721, guid: 68ff6a63041d8e045b92fcce5513c024, type: 3}
+  spawner: {fileID: 0}
 --- !u!114 &2660740486281165525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currState: 0
   prevState: 0
+  animator: {fileID: 0}
+  target: {fileID: 0}
+  targetTransform: {fileID: 0}
+  attackRange: 0
