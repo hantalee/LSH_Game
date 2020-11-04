@@ -7,8 +7,9 @@ public class Spawner : MonoBehaviour
     SpawnData[] currSpawnData;
     public float spawnDelay = 1.0f;
     private float currentTime;
-    private bool spawning;
+    public bool spawning;
     public int waveCount;
+    public int monsterCount;
 
     private void Start()
     {
@@ -31,10 +32,6 @@ public class Spawner : MonoBehaviour
                     spawning = false;
             }
         }
-        else
-        {
-            StageManager.Instance.CheckSpawnOver();
-        }
     }
 
     void StartWave(StageData data)
@@ -42,6 +39,7 @@ public class Spawner : MonoBehaviour
         spawning = true;
         waveCount = 0;
         currSpawnData = data.SpawnData;
+        monsterCount = 0;
     }
 
     void StartSpawn()
@@ -58,5 +56,7 @@ public class Spawner : MonoBehaviour
     {
         BaseMonster monster = ObjectPooling.Instance.GetMonsterByName(name);
         monster.transform.position = transform.position;
+        monster.spawner = this;
+        monsterCount++;
     }
 }

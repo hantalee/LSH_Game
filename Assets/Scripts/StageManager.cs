@@ -8,99 +8,60 @@ public class StageManager : MonoBehaviour
     public static event SpawnEventHandler OnStartSpawn;
 
     public List<StageData> stages;
-    public StageData currentRound;
-    public int currRound;
-    public float roundDelay = 10.0f;
-    public bool goNextRound = false;
-    private int spawnOver;
 
+    public StageData currRound;
+    public int roundNum;
+
+    public Spawner[] spawners;
     public SkillGiver giver;
-
-    private static StageManager instance;
-    public static StageManager Instance
-    {
-        get
-        {
-            if (instance != null)
-                return instance;
-            return null;
-        }
-    }
-
-
-    private void Awake()
-    {
-        if (instance != null)
-            Destroy(this);
-        instance = this;
-    }
 
     private void Start()
     {
+        currRound = null;
         stages = DataManager.Instance.StageDatas;
-        currRound = 0;
-        spawnOver = 0;
-        goNextRound = true;
+        roundNum = 0;
     }
 
-    private void Update()
+    public void OnClickStageButton()
     {
-        if(goNextRound)
+        for(int i = 0; i < spawners.Length; ++i)
         {
-            goNextRound = false;
-            currRound += 1;
-            currentRound = FindRound(currRound);
-            UIEventHandler.ChangeRound(currRound);
-            if(currentRound == null)
+            if ((spawners[i].monsterCount > 0) || (spawners[i].spawning == true))
             {
-                //스테이지가 끝났음
-                Debug.Log("모든 라운드가 끝났습니다");
-                goNextRound = false;
+                Debug.Log("모든 몬스터를 죽여야 다음 스테이지로 넘어갑니다.");
+                return;
             }
-            else if(currentRound.Type == RoundType.SkillGiver)
-            {
-                Debug.Log("스킬 주는 라운드");
-                giver.ActivateSkillGiver();
-                goNextRound = false;
-            }
-            else
-            {
-                StartSpawn(currentRound);
-                spawnOver = 0;
-            }
+        }
 
+        roundNum += 1;
+        currRound = FindRound(roundNum);
+        if (currRound == null) return; // 스테이지 종료
+
+        UIEventHandler.ChangeRound(roundNum);
+        if(currRound.Type == RoundType.SkillGiver)
+        {
+            giver.ActivateSkillGiver();
+        }
+        else
+        {
+            StartSpawn(currRound);
         }
     }
 
-    StageData FindRound(int round)
+    StageData FindRound(int num)
     {
         foreach (StageData stage in stages)
         {
             int r = stage.Round;
-            if(r == round)
-            {
+            if (r == num)
                 return stage;
-            }
         }
-        Debug.Log("해당 라운드를 찾지 못했습니다 : " + round);
+        Debug.Log("해당 라운드를 찾지 못했습니다 : " + num);
         return null;
     }
 
     void StartSpawn(StageData data)
     {
         OnStartSpawn(data);
-    }
-
-    public void CheckSpawnOver()
-    {
-        spawnOver += 1;
-        if (spawnOver == 2)
-            Invoke("GoNextRound", roundDelay);
-    }
-
-    void GoNextRound()
-    {
-        Debug.Log("GoNextRound");
-        goNextRound = true;
     }
 }

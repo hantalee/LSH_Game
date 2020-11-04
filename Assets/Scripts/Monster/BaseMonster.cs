@@ -23,6 +23,7 @@ public abstract class BaseMonster : MonoBehaviour
     public IFSM FSM;
     public PickupItem prefPickupItem;
     public DropTable DropTable { get; set; }
+    public Spawner spawner;
 
     public abstract void Init();
     public abstract void SetDropTable();
@@ -34,8 +35,11 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void Die()
     {
+        Debug.Log("is dead!");
         DropLoot();
         isDead = true;
+        spawner.monsterCount -= 1;
+        spawner = null;
         FSM.ChangeState(State.Die);
     }
 
