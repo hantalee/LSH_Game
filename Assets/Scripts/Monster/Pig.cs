@@ -21,8 +21,8 @@ public class Pig : BaseMonster
         DropTable = new DropTable();
         DropTable.loots = new List<Loot>()
         {
-            new Loot("IronSword", 10),
-            new Loot("HealthPotion", 20)
+            new Loot("IronSword", 20),
+            new Loot("HealthPotion", 30)
         };
     }
 
@@ -32,6 +32,7 @@ public class Pig : BaseMonster
     }
     public override void TakeDamage(int amount)
     {
+        AudioManager.Instance.Play("Hit");
         base.TakeDamage(amount);
     }
     public override void PerformAttack()

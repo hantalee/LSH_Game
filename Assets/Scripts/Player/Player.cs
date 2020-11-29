@@ -48,7 +48,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("플레이어 사망");
         IsDead = true;
+        CharacterManager.Instance.ReturnCharacter(character);
+        GameManager.Instance.PlayerDead();
     }
 }

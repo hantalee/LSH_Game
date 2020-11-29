@@ -12,8 +12,11 @@ public class SkillIconsUI : MonoBehaviour
 
     void CreateIcon(string skillName)
     {
-        SkillIcon icon = Instantiate(usedSkillIcon, transform, false);
-        icon.ChangeIcon(skillName);
+        if(this)
+        {
+            SkillIcon icon = Instantiate(usedSkillIcon, transform, false);
+            icon.ChangeIcon(skillName);
+        }
     }
 
 }

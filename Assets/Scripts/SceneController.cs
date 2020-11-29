@@ -18,14 +18,20 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(gameObject);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
     }
 
-    //에디터에서 버튼의 OnClick으로 호출
+    public void OnClickStartButton(string sceneName)
+    {
+        AudioManager.Instance.Play("Select");
+        LoadScene(sceneName);
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);    
@@ -35,8 +41,8 @@ public class SceneController : MonoBehaviour
     {
         if(scene.name == "MainGame")
         {
-            CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<Player>();
-            CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<PlayerController>();
+            CharacterPeek.Instance.UsedCharacter.gameObject.AddComponent<Player>();
+            CharacterPeek.Instance.UsedCharacter.gameObject.AddComponent<PlayerController>();
         }
     }
 }

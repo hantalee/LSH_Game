@@ -32,6 +32,7 @@ public class PigFSM : MonoBehaviour, IFSM
         states[(int)State.Attack] = new PigAttack(this);
         states[(int)State.Hit] = new PigHit(this);
         states[(int)State.Die] = new PigDie(this);
+        states[(int)State.Return] = new PigReturn(this);
 
         machine.SetState(states[(int)State.Idle], this);
     }
@@ -373,6 +374,52 @@ public class PigDie : FSM<PigFSM>
     {
         yield return new WaitForSeconds(time);
 
-        ObjectPooling.Instance.ReturnMonster(owner.Monster);
+        CharacterManager.Instance.ReturnMonster(owner.Monster);
+    }
+}
+
+public class PigReturn : FSM<PigFSM>
+{
+    private PigFSM owner;
+
+    private IEnumerator IChangeState = null;
+
+    public PigReturn(PigFSM owner)
+    {
+        this.owner = owner;
+    }
+
+    public override void Begine()
+    {
+        owner.currState = State.Return;
+
+        ExecuteCoroutine();
+    }
+
+    public override void Run()
+    {
+    }
+
+    public override void Exit()
+    {
+        owner.prevState = State.Return;
+    }
+
+    public void ExecuteCoroutine()
+    {
+        if (IChangeState != null)
+        {
+            owner.StopCoroutine(IChangeState);
+            IChangeState = null;
+        }
+        IChangeState = ReturnMonster();
+        owner.StartCoroutine(IChangeState);
+    }
+
+    public IEnumerator ReturnMonster()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        CharacterManager.Instance.ReturnMonster(owner.Monster);
     }
 }

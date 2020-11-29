@@ -11,12 +11,12 @@ public class RandomPeek : MonoBehaviour
 
     private void Awake()
     {
-        CharacterManager.Instance.RandomPeek();
+        CharacterPeek.Instance.RandomPeek();
         SkillManager.Instance.RandomPeek(peekupSkillCount);
 
         foreach (Image img in imgs)
         {
-            //img.enabled = false;
+            img.enabled = false;
         }
 
         StartRandomPeek();
@@ -24,19 +24,14 @@ public class RandomPeek : MonoBehaviour
 
     public void StartRandomPeek()
     {
-        BaseCharacter character = CharacterManager.Instance.UsedCharacter;
+        BaseCharacter character = CharacterPeek.Instance.UsedCharacter;
         List<BaseSkill> skills = SkillManager.Instance.UsedSkills;
 
-        /* 개발하면서 씬변경 때문에 잠시 막아둠
-                character.transform.position = characterPosition.transform.position;
-                for(int i = 0; i < skills.Count; ++i)
-                {
-                    imgs[i].sprite = Resources.Load<Sprite>("UI/Icons/Skills/" + skills[i].Data.Name);
-                    imgs[i].enabled = true;
-                }
-        */
-        character.transform.position = new Vector3(0, 0, 0);
-        CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<Player>();
-        CharacterManager.Instance.UsedCharacter.gameObject.AddComponent<PlayerController>();
+        character.transform.position = characterPosition.transform.position;
+        for(int i = 0; i < skills.Count; ++i)
+        {
+            imgs[i].sprite = Resources.Load<Sprite>("UI/Icons/Skills/" + skills[i].Data.Name);
+            imgs[i].enabled = true;
+        }
     }
 }

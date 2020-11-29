@@ -51,13 +51,14 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(this);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
 
-        savePath = Application.persistentDataPath;
-        BuildDataBase();
+            savePath = Application.persistentDataPath;
+            BuildDataBase();
+        }
     }
 
     void BuildDataBase()

@@ -13,6 +13,7 @@ public abstract class BaseMonster : MonoBehaviour
     public int CurrentHealth { get; set; }
 
     public bool isDead = false;
+    public bool isSpanwed = false;
 
     public GameObject damageText;
 
@@ -31,12 +32,20 @@ public abstract class BaseMonster : MonoBehaviour
     private void Awake()
     {
         FSM = GetComponent<IFSM>();
+        GameManager.OnPlayerDead += ReturnMonster;
+    }
+
+    public void ReturnMonster()
+    {
+        if (isSpanwed)
+            FSM.ChangeState(State.Return);
     }
 
     public virtual void Die()
     {
         DropLoot();
         isDead = true;
+        isSpanwed = false;
         spawner.monsterCount -= 1;
         spawner = null;
         FSM.ChangeState(State.Die);

@@ -11,6 +11,7 @@ public enum State
     Hit,
     Die,
     Give,
+    Return,
     End
 }
 

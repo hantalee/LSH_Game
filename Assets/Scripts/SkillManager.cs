@@ -26,12 +26,13 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(this);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
 
-        LoadPrefabs();
+            LoadPrefabs();
+        }
     }
 
     void LoadPrefabs()
@@ -88,10 +89,22 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void DeActivatSkillByName(string skillName)
+    public void DeActivateSkillByName(string skillName)
     {
         BaseSkill skill = UsedSkills.Find(x => (x.Data.Name == skillName));
         if (skill != null)
             skill.DeActivation();
+    }
+
+    public void DeactivateAllUsedSkills()
+    {
+        foreach (BaseSkill skill in UsedSkills)
+        {
+            if (skill != null)
+            {
+                skill.DeActivation();
+            }
+        }
+        UsedSkills.Clear();
     }
 }

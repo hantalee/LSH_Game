@@ -54,9 +54,10 @@ public class Spawner : MonoBehaviour
 
     void SpawnMonster(string name)
     {
-        BaseMonster monster = ObjectPooling.Instance.GetMonsterByName(name);
+        BaseMonster monster = CharacterManager.Instance.GetMonsterByName(name);
         monster.transform.position = transform.position;
         monster.spawner = this;
+        monster.isSpanwed = true;
         monsterCount++;
     }
 }

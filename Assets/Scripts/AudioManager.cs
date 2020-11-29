@@ -35,19 +35,25 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(gameObject);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        foreach (Sound sound in sounds)
+        if (instance == null)
         {
-            sound.source = gameObject.AddComponent<AudioSource>();
-            sound.source.clip = sound.clip;
-            sound.source.volume = sound.volume;
-            sound.source.pitch = sound.pitch;
-            sound.source.loop = sound.loop;
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            foreach (Sound sound in sounds)
+            {
+                sound.source = gameObject.AddComponent<AudioSource>();
+                sound.source.clip = sound.clip;
+                sound.source.volume = sound.volume;
+                sound.source.pitch = sound.pitch;
+                sound.source.loop = sound.loop;
+            }
         }
+    }
+
+    void Start()
+    {
+        Play("BGM");
     }
 
     public void Play(string name)

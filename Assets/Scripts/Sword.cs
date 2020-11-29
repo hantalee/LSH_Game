@@ -17,6 +17,7 @@ public class Sword : BaseWeapon
 
     public override void PerformAttack(int damage)
     {
+        AudioManager.Instance.Play("SwordAttack");
         base.PerformAttack(damage);
     }
 
